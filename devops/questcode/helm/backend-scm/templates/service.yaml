@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "backend-scm.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "backend-scm.name" . }}
+    helm.sh/chart: {{ include "backend-scm.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+      nodePort: {{ .Values.service.nodePort }}
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: {{ include "backend-scm.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}

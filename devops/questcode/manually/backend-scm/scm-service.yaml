@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: backend-scm
+spec:
+  type: NodePort
+  selector:
+    app: backend-scm
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3030
+    nodePort: 30030

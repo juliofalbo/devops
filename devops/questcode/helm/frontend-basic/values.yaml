@@ -1,0 +1,10 @@
+image:
+  tag: 0.1.11
+
+service:
+  nodePort: 30880
+
+container:
+  port: 80
+
+replicas: 2

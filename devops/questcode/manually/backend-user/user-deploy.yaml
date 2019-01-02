@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-user
+  labels:
+    app: backend-user
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend-user
+  template:
+    metadata:
+      labels:
+        app: backend-user
+    spec:
+      containers:
+      - name: backend-user
+        image: rodrigogrohl/questcode-backend-user:0.1.4
+        ports:
+        - containerPort: 3020
+        env:
+        - name: NODE_ENV
+          # value: "staging"
+          valueFrom:
+            configMapKeyRef:
+              name: questcode
+              key: NODE_ENV
+        - name: MONGO_URI
+          # value: "mongodb://dbuser:dbuser77@ds145304.mlab.com:45304/warriorback-dev"
+          valueFrom:
+            secretKeyRef:
+              name: questcode
+              key: MONGO_URI
+        - name: SECRET_OR_KEY
+          # value: "jb@la77"
+          valueFrom:
+            secretKeyRef:
+              name: questcode
+              key: SECRET_OR_KEY

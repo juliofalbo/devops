@@ -1,0 +1,8 @@
+env:
+  open:
+    STORAGE: local
+    DISABLE_API: false
+    ALLOW_OVERWRITE: true
+service:
+  type: NodePort
+  nodePort: 30010
