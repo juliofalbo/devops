@@ -1,0 +1,14 @@
+version: '3'
+services:
+  user:
+    image: "backend-user:latest"
+    ports:
+      - "3020:3020"
+  scm:
+    image: "backend-scm:latest"
+    ports:
+      - "3030:3030"
+  frontend:
+    image: "frontend:latest"
+    ports:
+      - "80:80"

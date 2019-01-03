@@ -13,19 +13,18 @@ nameOverride: ""
 fullnameOverride: ""
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 80
   targetPort: 3020
-  nodePort: 30020
 
 ingress:
-  enabled: false
+  enabled: true
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  paths: []
+  paths: ["/api/user", "/api/profile", "/api/post", "/api/health"]
   hosts:
-    - chart-example.local
+    - questcode.org
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

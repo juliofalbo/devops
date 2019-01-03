@@ -1,3 +1,3 @@
 #!/bin/sh
 
-helm create frontend
+helm create <your chart name>

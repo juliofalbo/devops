@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: questcode
+  namespace: staging
+spec:
+  rules:
+  - host: staging.questcode.org
+    http:
+      paths:
+      - backend:
+          serviceName: staging-frontend
+          servicePort: 80
